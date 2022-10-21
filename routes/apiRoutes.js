@@ -9,7 +9,11 @@ router.get("/api/notes", (req, res)=>{
 })
 
 router.post("/api/notes", (req, res)=>{
-  //need to create post route  
+  //need to create post route 
+  
+  //need to push value from req.body to db array
+  //need to update the revised db with new data 
+  //into db.json file
   
   console.log(req.body)
 })
