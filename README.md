@@ -14,7 +14,7 @@ The screenshots below show the app in use during testing once functionality had 
 
 ## Links
 
-link to application deployed using heroku: 
+link to application deployed using heroku: https://noteworthy-notes-vd.herokuapp.com/
 
-link to GitHub repository: 
+link to GitHub repository: https://github.com/dejuliusvince/Noteworthy_Notes
 
