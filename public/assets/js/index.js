@@ -103,12 +103,21 @@ const handleNoteView = (e) => {
 };
 
 
+//Need a eventListener to render a previous note on the page when clicked
+document.addEventListener("click", event => {
+  if(event.target.classlist.contains('list-group-item')){
+    handleNewNoteView(e)
+  }
+})
+
+
 
 // Sets the activeNote to and empty object and allows the user to enter a new note
 const handleNewNoteView = (e) => {
   activeNote = {};
   renderActiveNote();
 };
+
 
 const handleRenderSaveBtn = () => {
   if (!noteTitle.value.trim() || !noteText.value.trim()) {

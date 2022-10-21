@@ -1,3 +1,5 @@
+//import necessary libraries and databse 
+
 const router = require("express").Router()
 const fs = require("fs")
 const util = require("util")
@@ -10,38 +12,26 @@ router.get("/api/notes", (req, res)=>{
     res.json(db)
 })
 
+//need a post route to create new notes and save them to database
 
-//function to read data from file to 
-//be called when pushing data to .json file
-//in db folder
-/*
-const readAndAppend = (content, file) => {
-  fs.readFile(file, 'utf8', (err, data) => {
-    if(err) {
-      console.error(err)
-    }
-    else {
-      const parsedData = JSON.parse(data);
-      parsedData.push(content);
-      writeToFile(file, parsedData)
-    }
-  })
-}
-*/
 router.post("/api/notes", (req, res)=>{
   console.log(req.body)
-  //need to create post route 
-
+ 
+//push new note object to db.json file
   db.push(req.body)
 
   const { title, text } = req.body
 
+  //need to give notes an id in order to
+  //render them when clicked based on front-end
+  //javascript methods for showing notes
   if (title && text) {
     const newNote = {
       title,
       text,
       id: uid(),
     }
+    //read 
     fs.readFile('./db/db.json', 'utf8', (err,data)=>{
       if (err){
           console.error(err)
