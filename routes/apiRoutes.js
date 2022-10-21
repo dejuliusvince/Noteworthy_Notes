@@ -2,6 +2,7 @@ const router = require("express").Router()
 const fs = require("fs")
 const util = require("util")
 const db = require("../db/db.json")
+const { uid } = require("uid")
 
 
 //Get request from note api
@@ -39,6 +40,7 @@ router.post("/api/notes", (req, res)=>{
     const newNote = {
       title,
       text,
+      id: uid(),
     }
     fs.readFile('./db/db.json', 'utf8', (err,data)=>{
       if (err){
