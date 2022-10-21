@@ -31,7 +31,7 @@ router.post("/api/notes", (req, res)=>{
       text,
       id: uid(),
     }
-    //read 
+    //read json file and parse data, then push to array in database
     fs.readFile('./db/db.json', 'utf8', (err,data)=>{
       if (err){
           console.error(err)
@@ -40,7 +40,7 @@ router.post("/api/notes", (req, res)=>{
         const parsedNotes = JSON.parse(data)
 
         parsedNotes.push(newNote)
-
+        //write new note object to json file in db folder
         fs.writeFile('./db/db.json', JSON.stringify(parsedNotes),
         (writeErr) => 
           writeErr
