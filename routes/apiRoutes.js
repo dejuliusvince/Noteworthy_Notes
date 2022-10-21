@@ -31,6 +31,8 @@ router.post("/api/notes", (req, res)=>{
   console.log(req.body)
   //need to create post route 
 
+  db.push(req.body)
+
   const { title, text } = req.body
 
   if (title && text) {
@@ -38,7 +40,7 @@ router.post("/api/notes", (req, res)=>{
       title,
       text,
     }
-    fs.readFile('../db/db.json', 'utf8', (err,data)=>{
+    fs.readFile('./db/db.json', 'utf8', (err,data)=>{
       if (err){
           console.error(err)
       }
@@ -47,7 +49,7 @@ router.post("/api/notes", (req, res)=>{
 
         parsedNotes.push(newNote)
 
-        fs.writeFile('../db/db.json', JSON.stringify(parsedNotes),
+        fs.writeFile('./db/db.json', JSON.stringify(parsedNotes),
         (writeErr) => 
           writeErr
             ? console.error(writeErr)
@@ -58,7 +60,7 @@ router.post("/api/notes", (req, res)=>{
     })
     const response = {
       status: 'success',
-      body: newReview,
+      body: newNote,
     }
 
     console.log(response)
